@@ -11,7 +11,6 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const [file, setFile] = useState();
-  console.log(token);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,12 +46,12 @@ const Publish = ({ token }) => {
   return (
     <>
       <div className="container bg-form">
-        <h3>Vends ton article</h3>
+        <span className="line">Vends ton article</span>
 
         <div className="offer-form">
-          <form onSubmit={handleSubmit}>
+          <form>
             <div className="picture-box">
-              <h3>Ajoute une photo</h3>
+              <h3>Clique pour ajouter une photo</h3>
               <input
                 type="file"
                 multiple={true}
@@ -140,9 +139,11 @@ const Publish = ({ token }) => {
                   placeholder="ex : 00,00 euros"
                 />
               </span>
-              <input type="submit" />
             </div>
           </form>
+        </div>
+        <div className="offer-submit-btn">
+          <button onClick={handleSubmit}>Publier cette annonce</button>
         </div>
       </div>
     </>

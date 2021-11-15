@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
 
@@ -26,7 +27,7 @@ const Signup = ({ setUser }) => {
       console.log(error.response);
       if (error.response.status === 409) {
         setErrorMessage("Cet email a déjà un compte");
-        alert(errorMessage);
+        alert(errorMessage ? errorMessage : "Cet email a déjà un compte");
       }
     }
   };
@@ -34,29 +35,38 @@ const Signup = ({ setUser }) => {
   return (
     <>
       <div className="container">
-        <h3>S'inscrire</h3>
-        <div className="form">
-          <form action="">
-            <input
-              type="text"
-              placeholder="Nom d'utilisateur"
-              value={userName}
-              onChange={(e) => setUserName(e.target.value)}
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-              type="text"
-              placeholder="Mot de passe"
-              value={passWord}
-              onChange={(e) => setPassWord(e.target.value)}
-            />
+        <div className="signup-form">
+          <h3>S'inscrire</h3>
+          <form>
+            <div className="sg-box">
+              <input
+                type="text"
+                placeholder="Nom d'utilisateur"
+                value={userName}
+                onChange={(e) => setUserName(e.target.value)}
+              />
+            </div>
+            <div className="sg-box">
+              <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="sg-box">
+              <input
+                type="text"
+                placeholder="Mot de passe"
+                value={passWord}
+                onChange={(e) => setPassWord(e.target.value)}
+              />
+            </div>
             <button onClick={handleSubmit}>S'inscire</button>
           </form>
+          <Link to={"/Login"}>
+            <p className="reminder">Tu as déjà un compte ? Connecte-toi !</p>
+          </Link>
         </div>
       </div>
     </>

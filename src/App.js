@@ -26,14 +26,6 @@ function App() {
     setToken(token);
   };
 
-  const setFilter = (title) => {
-    let titleGo = `?title=${title}`;
-    // let priceMinGo = `priceMin=${priceMin}`;
-    // let priceMaxGo = `priceMax=${priceMax}`;
-
-    return title !== "" ? titleGo : "";
-  };
-
   return (
     <Router>
       <Header
@@ -44,7 +36,10 @@ function App() {
       />
 
       <Routes>
-        <Route path="/" element={<Home />} setFilter={setFilter} />
+        <Route
+          path="/"
+          element={<Home title={title} setTitle={setTitle} token={token} />}
+        />
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />

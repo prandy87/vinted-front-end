@@ -30,7 +30,8 @@ h2 {
   padding-top: 15px;
 }
 .logo-container img {
-  height: 50px;
+  height: 45px;
+  margin-left: 50px;
 }
 .header button {
   height: 50px;
@@ -40,6 +41,7 @@ h2 {
   border: none;
   margin-left: 10px;
   cursor: pointer;
+  font-weight: lighter;
 }
 
 .header > span > button :last-of-type {
@@ -49,9 +51,22 @@ h2 {
 .header-search-bar {
   margin-top: 4px;
   height: 38px;
-  width: 250px;
-  border-radius: 4px;
+  width: 400px;
+  border-radius: 5px;
   border: 1px solid lightgray;
+  background-color: #f5f6f7;
+  border: none;
+  outline: none;
+}
+.header .deconnect-btn button {
+  height: 50px;
+  color: white;
+  background-color: rgb(117, 14, 14);
+  border-radius: 5px;
+  border: none;
+  margin-left: 10px;
+  font-weight: lighter;
+  cursor: pointer;
 }
 
 /* Banner */
@@ -61,24 +76,32 @@ h2 {
   height: 500px;
 }
 
-.banner img {
+.banner > img {
   object-fit: cover;
   width: 100%;
   height: 70%;
   position: absolute;
 }
+.banner > :nth-child(2) {
+  background-size: contain;
+  height: 70px;
+  position: relative;
+  top: 94%;
+  left: 2%;
+}
 
 .banner-box {
-  width: 400px;
-  height: 260px;
+  width: 340px;
+  height: 230px;
   background-color: white;
   z-index: 1;
   position: relative;
-  top: 30%;
+  top: 15%;
   left: 7%;
   padding-left: 35px;
   padding-top: 40px;
   line-height: 25px;
+  border-radius: 3px;
 }
 
 .banner-box button {
@@ -98,24 +121,40 @@ h2 {
 /* BODY */
 
 .products {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  justify-content: space-around;
+
+  /* justify-content: space-around; */
 }
 
+.user-name-top {
+  background-color: white;
+  height: 25px;
+  margin-top: 25px;
+  font-size: 14px;
+  font-weight: 70;
+  margin-left: 20px;
+  color: rgb(98, 97, 97);
+}
+
+.user-name-top img {
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
 .product-box {
   height: 393px;
-  width: 210;
+  width: 200px;
   background-color: white;
   cursor: pointer;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding-left: 8px;
-  margin-top: 20px;
+
+  margin: 0 20px 20px 20px;
 }
 .product-box > img {
   object-fit: cover;
@@ -123,6 +162,21 @@ h2 {
   display: block;
   width: 200px;
   height: 80%;
+}
+
+.price {
+  color: black;
+  font-weight: 90;
+  font-size: 18px;
+  text-align: left;
+  margin-top: 3px;
+}
+.desc {
+  text-overflow: ellipsis;
+  font-weight: 70;
+  font-size: 15px;
+  color: rgb(98, 97, 97);
+  text-align: left;
 }
 
 /* Offer */
@@ -152,8 +206,51 @@ h2 {
   width: 600px;
   padding: 5%;
 }
+.right-box button {
+  margin-left: 40%;
+  margin-top: 6%;
+}
+.product-details {
+  margin-top: 10%;
+  padding-bottom: 10%;
 
-/* Offer */
+  border-bottom: 1.2px solid lightgray;
+}
+
+/* Signup form && Login form*/
+.signup-form {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: space-between;
+  align-content: center;
+}
+.signup-form h3 {
+  font-size: 30px;
+  font-weight: 250;
+  text-align: center;
+}
+
+.sg-box input {
+  height: 40px;
+  width: 250px;
+  margin: 10px;
+  border: none;
+  border-bottom: 0.5px solid lightgray;
+}
+.signup-form button {
+  width: 250px;
+  margin: 10px;
+}
+
+.reminder {
+  font-size: 15px;
+  margin: 10px;
+  color: #51b1ba;
+}
+
+/* Offer Publish*/
 
 .bg-form {
   background-color: lightgray;
@@ -162,6 +259,7 @@ h2 {
 
 .bg-form h3 {
   color: rgb(98, 97, 97);
+  font-weight: 300;
 }
 
 .offer-form {
@@ -239,13 +337,46 @@ h2 {
 }
 
 input[type="file"] {
-  width: 100%;
+  display: flex;
+  justify-content: row;
+  justify-content: center;
+  width: 50vw;
   height: 100%;
-  /* top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; */
-  opacity: 0.5;
+
+  opacity: 0.7;
+  font-size: 14px;
   cursor: pointer;
-  color: green;
+  color: red;
+  padding-left: 44%;
+  text-align: center;
+}
+::-webkit-file-upload-button {
+  display: flex;
+  font-weight: normal;
+  justify-content: center;
+  background: white;
+  font-size: 18px;
+  color: #50afb8;
+  padding: 1em;
+  border: 2.5px solid #50afb8;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.offer-submit-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.offer-submit-btn,
+button {
+  background-color: #50afb8;
+  color: white;
+  font-size: 15px;
+  font-weight: lighter;
+  width: 110px;
+  height: 60px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
 }
