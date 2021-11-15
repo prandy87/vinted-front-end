@@ -2,14 +2,14 @@ import axios from "axios";
 import { useState } from "react";
 
 const Publish = ({ token }) => {
-  const [title, setTitle] = useState("az");
-  const [description, setDescription] = useState("az");
-  const [price, setPrice] = useState(30);
-  const [brand, setBrand] = useState("ze");
-  const [size, setSize] = useState("ze");
-  const [condition, setCondition] = useState("ze");
-  const [color, setColor] = useState("ze");
-  const [city, setCity] = useState("ze");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState();
+  const [brand, setBrand] = useState("");
+  const [size, setSize] = useState("");
+  const [condition, setCondition] = useState("");
+  const [color, setColor] = useState("");
+  const [city, setCity] = useState("");
   const [file, setFile] = useState();
   console.log(token);
 
@@ -33,7 +33,7 @@ const Publish = ({ token }) => {
         formData,
         {
           headers: {
-            authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${token}`,
             "Content-Type": "multipart/form-data",
           },
         }
