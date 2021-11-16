@@ -71,7 +71,10 @@ const Home = ({ title, setTitle, token }) => {
                         {elem.owner.account.username}
                       </span>
                       <div key={elem._id} className="product-box">
-                        <img src={elem.product_image} alt="product-small" />
+                        <img
+                          src={elem.product_image.secure_url}
+                          alt="product-small"
+                        />
 
                         <div>
                           <div className="price">{elem.product_price} €</div>
