@@ -20,8 +20,7 @@ const Home = ({ title, setTitle, token }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/offers" +
-            setFilter(title)
+          "https://lereacteur-vinted-api.herokuapp.com/" + setFilter(title)
         );
         setData(response.data);
         setIsLoading(false);
@@ -68,14 +67,11 @@ const Home = ({ title, setTitle, token }) => {
                   <>
                     <Link to={`/offer/${elem._id}`}>
                       <span className="user-name-top">
-                        <img src={elem._id.avatar} alt="" />{" "}
+                        <img src={elem.owner.account.avatar} alt="" />{" "}
                         {elem.owner.account.username}
                       </span>
                       <div key={elem._id} className="product-box">
-                        <img
-                          src={elem.product_image.secure_url}
-                          alt="product-small"
-                        />
+                        <img src={elem.product_image} alt="product-small" />
 
                         <div>
                           <div className="price">{elem.product_price} €</div>
