@@ -15,7 +15,6 @@ const Home = ({ title, setTitle, token }) => {
 
     return titleGo;
   };
-  console.log(setFilter(title));
 
   useEffect(() => {
     const fetchData = async () => {

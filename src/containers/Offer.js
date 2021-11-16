@@ -2,17 +2,11 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import { useEffect, useState } from "react";
-import {
-  useParams,
-  useNavigate,
-  useLocation,
-  useHistory,
-} from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 
 const Offer = ({ token }) => {
   const { id } = useParams();
 
-  const history = useHistory();
   const [data, setData] = useState();
   const [isLoadind, setIsLoading] = useState(true);
 
@@ -46,12 +40,7 @@ const Offer = ({ token }) => {
         </div>
         <div className="right-box">
           <div>
-            <h2>{data.product_name}</h2>
             <h2>{data.product_price} €</h2>
-            {history.push({
-              title: data.product_name,
-              price: data.product_price,
-            })}
 
             <div className="product-details">
               {data.product_details.map((elem, index) => {
@@ -73,12 +62,11 @@ const Offer = ({ token }) => {
             <div>
               {token ? (
                 <Link
-                  to={{
-                    pathname: "/payment",
-                    state: {
-                      title: data.product_name,
-                      price: data.product_price,
-                    },
+                  to={"/payment"}
+                  state={{
+                    title: data.product_name,
+                    price: data.product_price,
+                    picture: data.product_pictures.secure_url,
                   }}
                 >
                   <button>Acheter</button>

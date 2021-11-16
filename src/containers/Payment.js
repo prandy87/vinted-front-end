@@ -3,16 +3,17 @@ import { Elements } from "@stripe/react-stripe-js";
 import { useLocation } from "react-router";
 import CheckoutForm from "../Components/CheckoutForm";
 
-const Payment = () => {
+const Payment = ({ id }) => {
   const location = useLocation();
-  //   const { title } = location.state;
-  //   const { price } = location.state;
-  const stripePromise = loadStripe("pk_live_aM4dCEo3abEVFfdFAlMTBNAV");
+  const { title } = location.state;
+  const { price } = location.state;
+  const { picture } = location.state;
+  const stripePromise = loadStripe("pk_test_5z9rSB8XwuAOihoBixCMfL6X");
   console.log(location);
   return (
     <>
       <Elements stripe={stripePromise}>
-        {/* <CheckoutForm title={title} price={price} /> */}
+        <CheckoutForm title={title} price={price} id={id} picture={picture} />
       </Elements>
     </>
   );

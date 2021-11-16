@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Login = ({ setUser }) => {
+const Login = ({ setUser, setId }) => {
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const navigate = useNavigate();
@@ -19,6 +19,7 @@ const Login = ({ setUser }) => {
       if (response.data.token) {
         setUser(response.data.token);
         navigate("/publish");
+        setId(response.data._id);
       }
     } catch (error) {
       console.log(error.message);

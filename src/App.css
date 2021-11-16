@@ -256,6 +256,8 @@ h2 {
 
 .bg-form {
   background-color: #eeeaea;
+  height: auto;
+  min-height: 700px;
   margin: 0 auto;
 }
 
