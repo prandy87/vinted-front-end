@@ -34,7 +34,8 @@ h2 {
   margin-left: 50px;
 }
 .header button {
-  height: 50px;
+  height: 40px;
+  width: 150px;
   color: white;
   background-color: #50afb8;
   border-radius: 5px;
@@ -59,7 +60,8 @@ h2 {
   outline: none;
 }
 .header .deconnect-btn button {
-  height: 50px;
+  height: 40px;
+  width: 150px;
   color: white;
   background-color: rgb(117, 14, 14);
   border-radius: 5px;
@@ -253,8 +255,13 @@ h2 {
 /* Offer Publish*/
 
 .bg-form {
-  background-color: lightgray;
+  background-color: #eeeaea;
   margin: 0 auto;
+}
+
+.publish-title {
+  font-size: 26px;
+  font-weight: 300;
 }
 
 .bg-form h3 {
@@ -274,9 +281,19 @@ h2 {
 
 .picture-box {
   background-color: white;
-  height: 160px;
+  min-height: 160px;
+  height: auto;
   width: 1224px;
   border-radius: 5px;
+}
+
+.picture-box img {
+  object-fit: cover;
+  box-sizing: border-box;
+  height: auto;
+  width: auto;
+  z-index: 2;
+  position: relative;
 }
 
 .offer-box-desc {
@@ -379,4 +396,14 @@ button {
   border: none;
   cursor: pointer;
   border-radius: 5px;
+}
+
+/* publish */
+
+.textarea {
+  width: 400px;
+  border: none;
+  outline: none;
+  background-color: rgb(238, 234, 234);
+  border-radius: 3px;
 }

@@ -10,6 +10,7 @@ import Header from "./Components/Header";
 import NoMatch from "./containers/NoMatch";
 import Login from "./containers/Login";
 import Publish from "./containers/Publish";
+import Payment from "./containers/Payment";
 
 function App() {
   const [token, setToken] = useState(Cookies.get("userToken") || null);
@@ -40,13 +41,14 @@ function App() {
           path="/"
           element={<Home title={title} setTitle={setTitle} token={token} />}
         />
-        <Route path="/offer/:id" element={<Offer />} />
+        <Route path="/offer/:id" element={<Offer token={token} />} />
         <Route path="/signup" element={<Signup setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route
           path="/publish"
           element={<Publish setUser={setUser} token={token} />}
         />
+        <Route path="/payment" element={<Payment />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
     </Router>

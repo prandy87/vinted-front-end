@@ -87,9 +87,15 @@ const Header = ({ token, setUser, setTitle }) => {
             </>
           )}
         </span>
-        <Link to={"/publish"}>
-          <button>Vends tes articles !</button>
-        </Link>
+        {token ? (
+          <Link to={"/publish"}>
+            <button>Vends tes articles !</button>
+          </Link>
+        ) : (
+          <Link to={"/login"}>
+            <button>Vends tes articles</button>
+          </Link>
+        )}
       </div>
     </>
   );

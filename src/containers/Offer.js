@@ -1,11 +1,18 @@
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
 
-const Offer = () => {
+import { useEffect, useState } from "react";
+import {
+  useParams,
+  useNavigate,
+  useLocation,
+  useHistory,
+} from "react-router-dom";
+
+const Offer = ({ token }) => {
   const { id } = useParams();
 
+  const history = useHistory();
   const [data, setData] = useState();
   const [isLoadind, setIsLoading] = useState(true);
 
@@ -39,7 +46,13 @@ const Offer = () => {
         </div>
         <div className="right-box">
           <div>
+            <h2>{data.product_name}</h2>
             <h2>{data.product_price} €</h2>
+            {history.push({
+              title: data.product_name,
+              price: data.product_price,
+            })}
+
             <div className="product-details">
               {data.product_details.map((elem, index) => {
                 const keys = Object.keys(elem);
@@ -58,7 +71,23 @@ const Offer = () => {
               <div>{data.owner.account.username}</div>
             </div>
             <div>
-              <button>Acheter</button>
+              {token ? (
+                <Link
+                  to={{
+                    pathname: "/payment",
+                    state: {
+                      title: data.product_name,
+                      price: data.product_price,
+                    },
+                  }}
+                >
+                  <button>Acheter</button>
+                </Link>
+              ) : (
+                <Link to={"/login"}>
+                  <button>Acheter</button>
+                </Link>
+              )}
             </div>
           </div>
         </div>

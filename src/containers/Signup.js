@@ -46,6 +46,7 @@ const Signup = ({ setUser }) => {
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
+            {/* ajouter border rouge si email deja pris */}
             <div className="sg-box">
               <input
                 type="email"

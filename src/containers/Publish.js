@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Publish = ({ token }) => {
   const [title, setTitle] = useState("");
@@ -11,6 +12,9 @@ const Publish = ({ token }) => {
   const [color, setColor] = useState("");
   const [city, setCity] = useState("");
   const [file, setFile] = useState();
+  const [preview, setPreview] = useState();
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,6 +42,9 @@ const Publish = ({ token }) => {
         }
       );
       console.log(response.data);
+      if (response.data._id) {
+        navigate(`/offer/${response.data._id}`);
+      }
     } catch (error) {
       console.log(error.message);
     }
@@ -46,16 +53,26 @@ const Publish = ({ token }) => {
   return (
     <>
       <div className="container bg-form">
-        <span className="line">Vends ton article</span>
+        <span className="publish-title">Vends ton article</span>
 
         <div className="offer-form">
           <form>
             <div className="picture-box">
               <h3>Clique pour ajouter une photo</h3>
+              {preview ? (
+                <span>
+                  <img src={preview} alt="preview" />
+                </span>
+              ) : (
+                <span></span>
+              )}
               <input
                 type="file"
                 multiple={true}
-                onChange={(e) => setFile(e.target.files[0])}
+                onChange={(e) => {
+                  setFile(e.target.files[0]);
+                  setPreview(URL.createObjectURL(e.target.files[0]));
+                }}
               />
             </div>
 
@@ -71,7 +88,8 @@ const Publish = ({ token }) => {
 
               <span className="line line-desc">
                 Décris ton article :
-                <input
+                <textarea
+                  className="textarea"
                   type="text"
                   onChange={(e) => setDescription(e.target.value)}
                   placeholder="ex : Portée une fois, état quasi-neuf"
@@ -136,7 +154,7 @@ const Publish = ({ token }) => {
                 <input
                   type="text"
                   onChange={(e) => setPrice(e.target.value)}
-                  placeholder="ex : 00,00 euros"
+                  placeholder="ex : 00,00 €"
                 />
               </span>
             </div>
