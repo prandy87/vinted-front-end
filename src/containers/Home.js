@@ -20,7 +20,8 @@ const Home = ({ title, setTitle, token }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://lereacteur-vinted-api.herokuapp.com/" + setFilter(title)
+          "https://lereacteur-vinted-api.herokuapp.com/offers" +
+            setFilter(title)
         );
         setData(response.data);
         setIsLoading(false);
